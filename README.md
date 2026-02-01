@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# 🛍️ ShopHub - Modern E-Commerce Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Razorpay](https://img.shields.io/badge/Razorpay-Payment-blue?style=for-the-badge&logo=razorpay)
+![Context API](https://img.shields.io/badge/State_Management-Context_API-purple?style=for-the-badge)
+![CSS Modules](https://img.shields.io/badge/Styling-CSS_Modules-orange?style=for-the-badge)
 
-## Available Scripts
+A fully functional, responsive E-commerce platform built with React.js. This application simulates a real-world shopping experience featuring product browsing, a dynamic shopping cart, **secure payment integration via Razorpay**, and a dedicated **Admin Dashboard** for product management (CRUD).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🛒 Customer Experience
+- **Dynamic Product Catalog:** Fetches products from an external API with loading states and error handling.
+- **Smart Cart System:** Add items, adjust quantities, calculate taxes, and view real-time totals.
+- **Razorpay Integration:** Complete checkout flow using Razorpay's Payment Gateway (Test Mode).
+- **Responsive UI:** Professional, mobile-first design with soft gradients and card-based layout.
+- **Product Details:** Dynamic routing to view individual product specifications.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔐 Admin & Authentication
+- **Role-Based Access Control:** Separate login flows for Users and Admins.
+- **Admin Dashboard:** Private route protected by authentication.
+- **CRUD Operations:** Admins can **Add new products** and **Delete existing products** directly from the UI.
+- **Global State Management:** Uses React Context API (`AuthContext`, `ProductContext`, `CartContext`) to manage app-wide data without prop-drilling.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+- **Frontend:** React.js (Hooks, Functional Components)
+- **Routing:** React Router DOM v6
+- **State Management:** React Context API + useReducer
+- **Payments:** Razorpay Web SDK
+- **Styling:** CSS Modules (Scoped styles) + Global CSS Variables
+- **API:** FakeStoreAPI (Mock Data) + Local State Simulation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Installation & Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/shophub-ecommerce.git
+   cd shophub-ecommerce
 
-### `npm run eject`
+    Install Dependencies
+    code Bash
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Configure Environment
+    This project uses Razorpay. You need a Test Key ID.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+        Open src/components/cart/CartSummary/CartSummary.jsx
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+        Replace "YOUR_RAZORPAY_KEY_ID" with your actual key from the Razorpay Dashboard.
 
-## Learn More
+    Run the Application
+    code Bash
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    npm start
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    Open http://localhost:3000 to view it in the browser.
 
-### Code Splitting
+💳 How to Test Payments (Razorpay)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    Add items to your cart.
 
-### Analyzing the Bundle Size
+    Click "Proceed to Checkout" / "Pay Now".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    A Razorpay popup will appear.
 
-### Making a Progressive Web App
+    Use the following Test Card details:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+        Card Number: 4111 1111 1111 1111 (Visa)
 
-### Advanced Configuration
+        Expiry: Any future date (e.g., 12/30)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+        CVV: 123
 
-### Deployment
+        OTP: 123456
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    On success, you will receive a confirmation alert and transaction ID.
 
-### `npm run build` fails to minify
+🔐 Login Credentials (Test Roles)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To test the Admin Dashboard and User features, use these credentials:
+Role	Email	Password	Access
+Admin	admin@shophub.com	admin123	Full Dashboard Access (CRUD)
+User	user@test.com	user123	Browsing & Purchasing Only
+📂 Project Structure
+code Bash
+
+src/
+├── components/
+│   ├── cart/           # Cart Item, Summary, & Payment Logic
+│   ├── layout/         # Navbar, Footer
+│   └── product/        # Product Cards & Grids
+├── context/
+│   ├── AuthContext.jsx    # Handles Login/Logout/Roles
+│   ├── CartContext.jsx    # Handles Cart Logic (Add/Remove/Qty)
+│   └── ProductContext.jsx # Handles Global Product List & CRUD
+├── hooks/              # Custom Hooks (useCart, useAuth)
+├── pages/
+│   ├── Admin/          # Admin Dashboard (Protected Route)
+│   ├── Cart/           # Shopping Cart View
+│   ├── Login/          # Authentication Page
+│   ├── ProductList/    # Home/Landing Page
+│   └── ProductDetail/  # Single Product View
+└── styles/             # Global variables and resets
+
+💡 Implementation Highlights
+1. Payment Integration Logic
+
+Instead of relying on heavy backend dependencies for the demo, I implemented a client-side integration of Razorpay. The app dynamically loads the Razorpay SDK script, initializes the payment instance with the calculated total from the CartContext, and handles success/failure callbacks to provide immediate user feedback.
+2. Mock Backend via Context
+
+To demonstrate full-stack capabilities without a database, I built a ProductContext that fetches initial data from an API but manages subsequent Create and Delete operations in local memory. This allows the Admin to delete a product and immediately see it disappear from the Home page grid, simulating a real-time database update.
+🔮 Future Improvements
+
+    Connect to a Node.js/Express backend for secure payment order generation.
+
+    Implement persistent database (MongoDB) for products.
+
+    Add User Sign-up functionality.
+
+    Add filters for Categories and Price ranges.
+
+Made by Deepith..
